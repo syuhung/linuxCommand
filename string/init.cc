@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	string s(10, 'c');
+	string s{};
 	cout << s << endl;
 	cout << sizeof(s) << endl;
 	cout << s.size() << endl;
