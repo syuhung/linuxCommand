@@ -1,3 +1,6 @@
+#ifndef SALES_DATA_H
+#define SALES_DATA_H
+
 #include <string>
 
 class Sales_data
@@ -16,3 +19,5 @@ private:
 Sales_data add(const Sales_data&, cosnt Sales_data&);
 std::ostream &print(std::ostream&, const Sanles_data&);
 std::istream &read(std::istream&, Sales_data&);
+
+#endif
