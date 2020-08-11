@@ -1,0 +1,5 @@
+size of uint8_t is 1
+size of sdshdr8 is 3
+size of sdshdr16 is 6
+size of sdshdr32 is 12
+size of sdshdr64 is 24
