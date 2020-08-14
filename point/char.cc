@@ -37,13 +37,19 @@ sds sdsnewlen(const void *init, size_t initlen)
 		memset(sh, 0, hdrlen+initlen+1);
 
 	s = (char*)sh+hdrlen;
+	cout << "s   : " << &s << endl;
 	fp = ((unsigned char*)s) - 1;
-	SDS_HDR_VAR(32,s);
-	sh->len = initlen;
-	sh->alloc = initlen;
+	//SDS_HDR_VAR(32,s);
+	sdshdr32* psh = (sdshdr32*) sh;
+	psh->len = initlen;
+	psh->alloc = initlen;
 	if(initlen && init)
 		memcpy(s, init, initlen);
 	s[initlen] = '\0';	
+
+	cout << "sh  : " << sh << endl;
+	cout << "psh : " << *(&s-hdrlen) << endl;
+	cout << "s : " << s << endl;
 
 	return s;
 }
@@ -57,9 +63,10 @@ int main()
 {
 	//char str[10] = "abcdefg";
 	char ss[] = "china";
+	cout << "ss : " << &ss << endl;
+	cout << "ss[0] : " << &(ss[0]) << endl;
 	char* str = ss;
-	char* pstr = sdsnew(str);
-	if (pstr)
-		cout << "str is : " << *pstr << endl;
+	cout << "str : " << &str << endl;
+	sds pstr = sdsnew(ss);
 	return 0;
 }

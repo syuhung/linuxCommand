@@ -38,7 +38,7 @@ sds sdsnewlen(const void *init, size_t initlen)
 	s = (char*)sh+hdrlen;
 	fp = ((unsigned char*)s) - 1;
 	//SDS_HDR_VAR(32,s);
-	struct sdshdr32* sh = (void*)((s)-(sizeof(struct sdshdr32)));
+	(struct sdshdr32*)sh = (void*)((s)-(sizeof(struct sdshdr32)));
 	sh->len = initlen;
 	sh->alloc = initlen;
 	if(initlen && init)
